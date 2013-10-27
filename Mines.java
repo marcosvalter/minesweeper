@@ -140,8 +140,8 @@ public class Mines {
      * @param flag boolean for flag
      */
     public void play(int xPos, int yPos, boolean flag) {
-        assert xPos >= 0 && xPos < lineNum;
-        assert yPos >= 0 && yPos < colNum;
+        assert xPos >= 0 & xPos < lineNum;
+        assert yPos >= 0 & yPos < colNum;
 
         xPos++;
         yPos++;
@@ -159,7 +159,7 @@ public class Mines {
                 usedFlags++;
             }
         } else {
-            if (matrix[xPos][yPos].getnMines() == -1 && matrix[xPos][yPos].getStatus() != 2) {
+            if (matrix[xPos][yPos].getnMines() == -1 & matrix[xPos][yPos].getStatus() != 2) {
                 matrix[xPos][yPos].setStatus(5);
                 gameEnd = true;
                 showField();
@@ -178,9 +178,9 @@ public class Mines {
     private void showField() {
         for (int i = 0; i < colNum + 2; i++) {
             for (int j = 0; j < lineNum + 2; j++) {
-                if (matrix[i][j].getnMines() == -1 && matrix[i][j].getStatus() == 2) {
+                if (matrix[i][j].getnMines() == -1 & matrix[i][j].getStatus() == 2) {
                     matrix[i][j].setStatus(4);  // correct flag
-                } else if (matrix[i][j].getnMines() != -1 && matrix[i][j].getStatus() == 2) {
+                } else if (matrix[i][j].getnMines() != -1 & matrix[i][j].getStatus() == 2) {
                     matrix[i][j].setStatus(3);  // incorrect flag
                 } else if (matrix[i][j].getStatus() != 5) {
                     matrix[i][j].setStatus(1);  // open cell
@@ -199,9 +199,9 @@ public class Mines {
         if (matrix[xPos][yPos].getnMines() == 0) {
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
-                    if (matrix[xPos + i][yPos + j].getnMines() != -1 && xPos + i > 0
-                            && xPos + i <= colNum && yPos + j > 0 && yPos + j <= lineNum
-                            && xPos != 0 && yPos != 0 && matrix[xPos + i][yPos + j].getStatus() == 0) {
+                    if (matrix[xPos + i][yPos + j].getnMines() != -1 & xPos + i > 0
+                            & xPos + i <= colNum & yPos + j > 0 & yPos + j <= lineNum
+                            & xPos != 0 & yPos != 0 & matrix[xPos + i][yPos + j].getStatus() == 0) {
                         openCell(xPos + i, yPos + j);
                     }
 
@@ -217,7 +217,7 @@ public class Mines {
      * @return int for cell nMines value
      */
     public int getMatrixCellnMines(int xPos, int yPos) {
-        assert xPos >= 0 && yPos >= 0;
+        assert xPos >= 0 & yPos >= 0;
 
         return matrix[++xPos][++yPos].getnMines();
     }
@@ -229,7 +229,7 @@ public class Mines {
      * @return int for cell status value
      */
     public int getMatrixCellStatus(int xPos, int yPos) {
-        assert xPos >= 0 && yPos >= 0;
+        assert xPos >= 0 & yPos >= 0;
 
         return matrix[++xPos][++yPos].getStatus();
     }
